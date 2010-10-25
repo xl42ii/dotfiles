@@ -1,0 +1,80 @@
+#========================================================================
+#
+# Sample xpdfrc file
+#
+# The Xpdf tools look for a config file in two places:
+# 1. ~/.xpdfrc
+# 2. in a system-wide directory, typically /usr/local/etc/xpdfrc
+#
+# This sample config file demonstrates some of the more common
+# configuration options.  Everything here is commented out.  You
+# should edit things (especially the file/directory paths, since
+# they'll likely be different on your system), and uncomment whichever
+# options you want to use.  For complete details on config file syntax
+# and available options, please see the xpdfrc(5) man page.
+#
+# Also, the Xpdf language support packages each include a set of
+# options to be added to the xpdfrc file.
+#
+# http://www.foolabs.com/xpdf/
+#
+#========================================================================
+initialZoom	width
+#
+#----- PostScript output control
+
+# Set the default PostScript file or command.
+
+psFile			"|lpr"
+
+# Set the default PostScript paper size -- this can be letter, legal,
+# A4, or A3.  You can also specify a paper size as width and height
+# (in points).
+
+psPaperSize		letter
+
+#----- misc settings
+
+# Enable t1lib, FreeType, and anti-aliased text.
+
+#enableT1lib		yes
+#enableFreeType		yes
+#antialias		yes
+
+# Set the command used to run a web browser when a URL hyperlink is
+# clicked.
+
+urlCommand "htmlview '%s'"
+#urlCommand	"netscape -remote 'openURL(%s)'"
+
+#Mon Jun 28 15:29:08 ADT 2010
+#Shan
+continuousView yes
+urlCommand "/usr/bin/seamonkey -remote 'openURL(%s)'"
+#binding
+#unbind ctrl-home      any         gotoPage(1)
+#with gotoPage(1) doesn't work
+#Seems no character is allowed, space is fine
+unbind ctrl-home      any
+unbind g              any
+unbind ctrl-end       any
+unbind f              any
+unbind F              any
+unbind ctrl-f              any
+unbind ctrl-g              any
+unbind left           any
+unbind right          any
+unbind up             any
+unbind down           any
+
+bind G       any         gotoLastPage
+bind g      any         gotoPage(1)
+bind i              any         focusToPageNum
+bind /              any         find
+bind ctrl-n              any         findNext
+bind h           any         scrollLeft(16)
+bind l          any         scrollRight(16)
+bind k             any         scrollUp(16)
+bind j           any         scrollDown(16)
+bind f8 any toggleOutline
+bind ctrl-j any toggleContinuousMode
